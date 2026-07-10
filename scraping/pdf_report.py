@@ -12,8 +12,10 @@ c.setFont("Helvetica", 12)
 y = 760
 
 for index, row in df.iterrows():
+    
     c.drawString(50, y, f"{row['name']} | {row['email']} | {row['city']} | {row['company']}")
     y -= 30
 
 c.save()
 print(" PDF Saved")
+
