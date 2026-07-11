@@ -20,7 +20,7 @@ for i in range(1, 51):
         name = h3.find("a")["title"]
         price = book.find("p", class_="price_color").get_text()
         rating = book.find("p", class_="star-rating")["class"][1]
-        data.append({"title": name, "price": price, "rating": rating})
+        data.append({"Title": name, "Price": price, "Rating": rating})
     
     
 import pandas as pd
