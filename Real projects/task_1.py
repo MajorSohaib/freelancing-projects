@@ -1,3 +1,7 @@
+#'''Task 1 — Easy (do this today)
+#"I need a list of all jobs posted on https://realpython.com/jobs/ — extract the job title, company, and location. Deliver in Excel."
+
+
 import requests
 import pandas as pd
 from bs4 import BeautifulSoup

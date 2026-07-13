@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+import pandas as pd
 url = "http://books.toscrape.com"
 response = requests.get(url)
 response.encoding = "utf-8"
@@ -23,7 +24,7 @@ for i in range(1, 51):
         data.append({"Title": name, "Price": price, "Rating": rating})
     
     
-import pandas as pd
+
 df = pd.DataFrame(data)
 df.to_csv("scraping/books.csv", index=False)
 print("saved")
