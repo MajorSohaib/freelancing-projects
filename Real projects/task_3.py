@@ -1,16 +1,18 @@
-import requests
-from bs4 import BeautifulSoup
+#Extract only Albert Einstein quotes from https://quotes.toscrape.com — not other authors. Deliver in CSV with quote text and tags."
+
+import requests 
 import pandas as pd
+from bs4 import BeautifulSoup
 url = "http://quotes.toscrape.com"
 response = requests.get(url)
 soup = BeautifulSoup(response.text, "html.parser")
 quotes = soup.find_all("div", class_="quote")
 
-data = []
+data =[]
 
 for i in range(1, 11):
     url = f"http://quotes.toscrape.com/page/{i}/"
-    response = requests.get(url)
+    response=requests.get(url)
     soup = BeautifulSoup(response.text, "html.parser")
     quotes = soup.find_all("div", class_="quote")
     
@@ -19,11 +21,12 @@ for i in range(1, 11):
         author = quote.find("small", class_="author").get_text()
         tag = quote.find_all("a", class_="tag")
         tag_list = [t.get_text() for t in tag]
-        data.append({"quote": text, "author": author, "tag":tag_list})
-    
-   
+        
+        
+        if author == "Albert Einstein":
+            data.append({"quote": text, "tags": tag_list})
+
 
 df = pd.DataFrame(data)
-df.to_csv("scraping/quotes.csv", index=False)
+df.to_csv("Real projects/task_3.py.csv", index=False)
 print("saved")
-
